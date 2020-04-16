@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import {addTech} from '~/store/modules/techs/actions'
+import {addTech} from '~/store/modules/techs/actions';
 import TechList from '~/components/TechList';
 
 jest.mock('react-redux');
