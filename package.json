@@ -21,12 +21,13 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "coverage": "rm -rf src/__tests__/coverage && react-app-rewired test --coverage --watchAll=false",
+    "coverage": "react-app-rewired test --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "jest": {
+    "verbose": true,
     "testMatch": [
-      "**/__tests__/**/*.test.js"
+      "src/__tests__/**/*.test.js"
     ],
     "setupFilesAfterEnv": [
       "@testing-library/jest-dom/extend-expect",
@@ -40,7 +41,7 @@
       "!src/App.js",
       "!src/services/api.js"
     ],
-    "coverageDirectory": "src/__tests__/coverage"
+    "coverageDirectory": "src/__coverage__"
   },
   "browserslist": {
     "production": [
