@@ -1,24 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 
 // import { Container } from './styles';
 
 export default function TechList() {
-  const [techs, setTechs] = useState([]);
+  const dispatch = useDispatch();
   const [newTech, setNewTech] = useState('');
 
-  useEffect(() => {
-    const techs = localStorage.getItem('techs');
-    if(techs){
-      setTechs(JSON.parse(techs));
-    }
-  },[]);
-
-  useEffect(() => {
-    localStorage.setItem('techs', JSON.stringify(techs));
-  },[techs]);
+  const techs = useSelector(state => state.techs);
 
   function handleAddTech() {
-    setTechs([...techs, newTech]);
+    dispatch({ type: 'ADD_TECH' , payload: { tech: newTech } });
     setNewTech('');
   } 
 
@@ -27,7 +19,7 @@ export default function TechList() {
       {Math.random()}
       <ul data-testid="tech-list">
         {techs.map((tech) => (
-          <li key={new Date()}>{tech}</li>
+          <li key={tech}>{tech}</li>
         ))}
       </ul>
       <label htmlFor="tech">Tech</label>
